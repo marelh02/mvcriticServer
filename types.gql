@@ -1,0 +1,88 @@
+ type Query {
+    users: [User]
+    actors: [Artist]
+    directors: [Artist]
+    filmsDescriptions:[FilmDescription]
+    filmDescription(filmId:String):FilmDescription
+    filmSummary(filmId:String):FilmSummary
+  }
+
+  type Mutation{
+    saveArtist(artist:SaveArtistInput!):ServerResponse!
+    saveFilmDescription(filmDescription:FilmDescriptionInput!):ServerResponse!
+    saveFilmSummary(filmSummary:FilmSummaryInput!):ServerResponse!
+  }
+
+  type ServerResponse{
+    success:Boolean!
+    message:String!
+    code:String
+  }
+
+  type User {
+    _id:ID
+    fullName:String!
+    email:String!
+    password:String!
+  }
+
+  type Artist {
+    _id:ID
+    name: String!
+    familyName:String!
+    nationality:String!
+    description:String!
+    img:String
+    role:Role!
+    gender:Gender!
+  }
+
+  type FilmDescription {
+    _id:ID
+    title:String!
+    nationality:String!
+    releaseDate:String!
+    coverImg:String
+    genres:[String!]!
+    director:Artist!
+    actors:[Artist!]!
+  }
+type FilmSummary {
+    _id:ID!
+    summary:String!
+  }
+
+enum Gender {
+  male
+  female
+}
+
+enum Role {
+  actor
+  director
+}
+
+input SaveArtistInput {
+  name: String!
+    familyName:String!
+    nationality:String!
+    description:String!
+    img:String
+    role:Role!
+    gender:Gender!
+}
+
+input FilmDescriptionInput {
+    title:String!
+    nationality:String!
+    releaseDate:String!
+    coverImg:String
+    genres:[String!]!
+    directorId:String!
+    actorsIds:[String!]!
+  }
+
+  input FilmSummaryInput {
+    _id:ID!
+    summary:String!
+  }
