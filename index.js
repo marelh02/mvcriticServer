@@ -12,7 +12,7 @@ const PORT = 4000
 
 
 //Mongoose setup
-const uri = "mongodb+srv://pikupiku:77jBW3Osp2CIoEp5@cluster0.rycgi4b.mongodb.net/?retryWrites=true&w=majority?directConnection=true"
+const uri = "mongodb+srv://pikupiku:77jBW3Osp2CIoEp5@cluster0.rycgi4b.mongodb.net/?retryWrites=true"
 // const uri="mongodb://mongo:Z206s6ksHyjX1DyzdeUq@containers-us-west-45.railway.app:7705/test?directConnection=true"
 mongoose.set('strictQuery', true);
 // await mongoose.connect('mongodb://127.0.0.1:27017/mvcritic').then(() => console.log("🦦 Mongoose connection established succefully"));
