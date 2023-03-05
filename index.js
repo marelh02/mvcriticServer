@@ -22,7 +22,7 @@ await mongoose.connect(
   { useNewUrlParser: true, useUnifiedTopology: true },
 ).then(
   () => console.log(" 🦦 Mongoose is connected man ")
-).catch(e=>{
+).catch(e => {
   console.log("*** Ay, we fucked up man ***");
   console.log(e);
 })
@@ -38,14 +38,18 @@ const server = new ApolloServer({
 });
 
 
-const { url } = await startStandaloneServer(server, {
-  context:async ()=>({
+const { url, port } = await startStandaloneServer(server, {
+  context: async () => ({
     User: User,
-    Artist:Artist,
-    FilmDescription:FilmDescription,
-    FilmSummary:FilmSummary
+    Artist: Artist,
+    FilmDescription: FilmDescription,
+    FilmSummary: FilmSummary
   }),
   listen: { port: process.env.PORT || PORT },
 });
 
-console.log(`🚀  Server ready at: ${url}`);
+console.log(`🚀  Server is ready 🚀
+  Listening on port ${port}
+  Query at ${url}
+`);
+
